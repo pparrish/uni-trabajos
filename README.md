@@ -16,8 +16,9 @@ Ni fanfarroneria ni prepotencia, este proyecto no tiene la intencion de demostra
 Uso Linux, asi que entre el compilador de gnu y el de borland puede haber varios problemas, me apego al estandar de C lo más que puedo asi que si hay un problema comentenlo.
 
 la directiva
-#define _WIN32
+  define _WIN32
 ...
 
 Es solamente para agregar la libreria conio cuando se compile en windows, es una forma para que yo trabaje más facil, si tienes una maquina de 64 y no se agrega la libreria al compilar (que unicamente la usamos para getch) elimina estas directivas.
 
+#faq
