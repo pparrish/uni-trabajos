@@ -32,7 +32,7 @@ void main(){
 
 
   /*Salida de datos*/
-  printf("Sus datos son :%2c %5d %.2f", caracter, flotante, entero);
+  printf("Sus datos son :%2c %5d %.2f", caracter, entero, flotante);
 
   
 
