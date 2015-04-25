@@ -21,7 +21,7 @@ void main(){
   int numero1, numero2, suma;
 
   /*Entrada de datos*/ 
-  printf("Coloca dos numeros y la posible suma de estos\n Coloca el primer numero entero:");
+  printf("Coloca dos numeros y la posible suma de estos\n Coloca el primer numero entero:\n");
   scanf("%d", &numero1);
   fflush(stdin);
 
@@ -29,14 +29,14 @@ void main(){
   scanf("%d", &numero2);
   fflush(stdin);
 
-  printf("Ingresa la posible suma de los numeros");
-  scanf("%d" &suma);
+  printf("Ingresa la posible suma de los numeros:\n");
+  scanf("%d", &suma);
 
   /*salida de datos*/
   if(suma == numero1 + numero2) {
-    printf("Enorabuena, acertaste.");
+    printf("Enorabuena, acertaste.\n");
   } else {
-    printf("La suma no es correcta");
+    printf("La suma no es correcta. \n");
   }
 
   #ifdef _WIN32
