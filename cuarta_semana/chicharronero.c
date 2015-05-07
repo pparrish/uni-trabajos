@@ -22,30 +22,48 @@
 
 void main(){
   
-  /*Valores de prueba: los usaremos en vez del if, pues conocemos la respuesta */
-  int a = 2, b = 3, c= -5;
-  double d = 0, x1 = 0, x2 = 0;
+  /*Valores de prueba: los usaremos en vez del if, pues conocemos la respuesta
+  d esta inicializado para evitar problemas*/
+  int a, b, c, d = 0;
+  
+  /*valores dobles pues trabajaremos con raizes, es mejor para obtener mayor presicion*/
+  double  x1 = 0, x2 = 0;
+
+  /*entrada de datos*/
+  printf("Por favor, dame ::a b c:: de ::: ax2 bx c :: \n");
+  scanf("%d %d %d", &a, &b, &c);
+
+
+  /*Operaciones*/
 
   /*Obtenemos primero el determinante y en base a el actuamos*/
   d= (b*b)-(4*a*c);
 
   /*Imprimimos el determinante solo para tener una referencia (esto lo quitaremos en la
-  version final) */
-  printf("%lf\n",d);
+  version final) 
+  printf("%d \n %lf\n",d, sqrt(d) );
+  
+  */
 
+  /*Si el determinante es 0 o positivo existira una raiz*/
+  if(d >= 0 ){
+    
+    /*si el determinante es igual a 0 se tomara una sola raiz*/
+    if(d == 0){
+      x1 = (sqrt(d)-b ) / (2*a);
+      printf("La unica raiz posible es :\nX1=%.2lf\n", x1 );
+    }
+    /*si el determinante es positivo y no 0 imprime las dos raizes*/
+    else{
+      x1 = ( sqrt(d)+b ) / (2*a);
+      x2 = ( sqrt(d)-b ) / (2*a);
+      printf("Las raizes son :\nX1=%.2lf\nX2=%.2lf\n", x1, x2 );
+    }
 
-  if(d > 0 ){
-    x1 = ( -b - sqrt(d) ) / (2*a);
-    x1 = ( -b + sqrt(d) ) / (2*a);
-  }else if (d = 0){
-    x1 = ( -b - sqrt(d) ) / (2*a);
-    x1 = ( -b + sqrt(d) ) / (2*a);
   }else{
-    printf("No tiene solucion (solucion compleja) \n");
+    /*Si el determinante es negativo no exisitira la raiz en la formula*/
+    printf("La ecuacion tiene una solucion compleja. Pruebe con otra\n");
   }
-
-
-  printf("%lf\n%lf\n",x1, x2);
 
   #ifdef _WIN32
   getch();
