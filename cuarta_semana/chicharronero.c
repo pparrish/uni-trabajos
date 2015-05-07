@@ -24,7 +24,8 @@ void main(){
 
 
   /*Valores de prueba: los usaremos en vez del if, pues conocemos la respuesta */
-  double a = 2, b = 3, c= -5,d = 0, x1 = 0, x2 = 0;
+  int a = 2, b = 3, c= -5,d = 0;
+  double x1 = 0, x2 = 0;
 
   /*Obtenemos primero el determinante y en base a el actuamos*/
   d= (b*b)-(4*a*c);
@@ -33,7 +34,7 @@ void main(){
   version final) */
   printf("%lf\n",d);
 
-  
+
   if(d > 0 ){
     x1 = ( -b - sqrt(d) ) / (2*a);
     x1 = ( -b + sqrt(d) ) / (2*a);
@@ -41,7 +42,7 @@ void main(){
     x1 = ( -b - sqrt(d) ) / (2*a);
     x1 = ( -b + sqrt(d) ) / (2*a);
   }else{
-    printf("No tiene solucion \n")
+    printf("No tiene solucion (solucion compleja) \n")
   }
 
 
