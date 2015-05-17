@@ -26,13 +26,13 @@ void main(){
 
   if(a > b && b<c){
     /*es a*/
-    printf("%d es el mas grande\n", a );
+    printf("%d es el mas grande\n", &a );
   }else if (b > c){
     /*es b*/
-    printf("%d es el mas grande\n", b );
+    printf("%d es el mas grande\n", &b );
   }else{
     /*es c*/
-    printf("%d es el mas grande\n", c );
+    printf("%d es el mas grande\n", &c );
 
   }
 
