@@ -24,11 +24,14 @@ void main(){
   /*La cariable error sera una "flag" que nos estara informando si 
   existe algun error en nuestro programa*/
 
-  int err = 0,
+  int i,
+      err = 0,
       bisiesto = 0,
       dia,
       mes,
-      ano;
+      ano,
+      doomsDay,
+      dayDoomsDay;
 
   /*Lo primero que necesitamos es una fecha que sea correcta
   para ello el usuario ingresara el numero de una fecha y no podra seguir
@@ -100,7 +103,7 @@ void main(){
   Se puede hacer de varias formas (un metodo convencional) ese lo dejo a su criterio (no usen este metodo)
 
   */
-  bisiesto = (  (!ano%4) && ( (ano%100) || (!ano%400) )  )? 1 : 0; 
+  bisiesto =  !(ano%4) && ( (ano%100) || !(ano%400) ) ? 1 : 0; 
 
   printf("Introduzca el dia\n");
 
@@ -171,197 +174,68 @@ void main(){
   de caa ano, en base a ese dia podemos calcular cualquier fecha
   en el calendario 
   */
-  int doomsDay,
-      dayDoomsDay,
-      diaSiglo,
-      diaAno;
+  /*El dia significativo del siglo 19xx es miercoles*/
+  i = ano/100; 
+  doomsDay = i%4;
 
-  /*Primero debemos cual fue el doomsDay del primer ano 
-  en el siglo en cuestion que se introdujo para esto dividimos sobre 100, con
-  esto eliminaremos las primeras dos cifras*/
-  diaSiglo = ano/100;
-
-  /*Si despues sacamos el modulo de 4 al numero de dos
-  cifras que nos debe de salir
-
-  Si el numero es 0  el dia cae martes
-  si es uno sera domingo
-  si es dos sera viernes
-  si es tres sera miercoles
-
-  */
-  diaSiglo = diaSiglo%4;
-
-  /*convertimos el diaSiglo a un numero
-  acorde con el dia que le toca*/
-  switch(diaSiglo){
+  switch (doomsDay) {
     case 0:
-    diaSiglo = 2;
-    break;
+      doomsDay = 2;
+      break;
     case 1:
-    diaSiglo = 7;
-    break;
+      doomsDay = 7;
+      break;
     case 2:
-    diaSiglo = 5;
-    break;
+      doomsDay = 6;
+      break;
     case 3:
-    diaSiglo = 3;
+      doomsDay = 3;
+      break;
   }
-
-  /*Ahora sacamos el dia significativo del ano en cuestion*/
-  int i = ano-( (ano/100)*100  );
-  /*El caso anterior borra los numeros pro arriba de 100,  por 
-  lo qu enos quedaran dos cifras solamente 1990 = xx90 asi*/
-  doomsDay = ( (i/12 + i%12 + (i%12)/4)%7 + diaSiglo )%7;
-  /*Estas operaciones nos dara una cifra entera del 1 al 7  para determinar que dia cae
-  doomsDay de ese ano en concreto*/
-
-  /*Ahora tenemos el doomsDay en concreto del ano que corresponde a el ultimo dia
-  de febrero de dicho ano, (sin tomar en cuenta si es bisiesto o no)
-  Nos falta realizar calculos en base a ese dia para saber que dia cae cualquier
-  dia del año nos basaremos en el mes que estamos, y comenzaremos el calulo con
-  el mes de febrero y marzo, que es el mas facil seguiremos con los meses pares, 
-  que tienene el mismo dia doomsDay en ciertos numeros especificos, despues para enero
-  que es un caso especial y por ultimo para los demas meses que deverian ser impares*/
-  if(mes==2 || mes == 3){
-    
-    /*Para febrero solamente
-    Entramosque el ultimo dia de febrero debe ser 28 o 29*/
-    dayDoomsDay = (bisiesto)? 29 : 28;
-
-    /*Si el dia que se ingreso es 28 o 29 (igual al doomsDay) no necesitamos hacer nada*/
-    if(dayDoomsDay == dia){
-      dayDoomsDay = doomsDay;
-    }else{
-      /*Si es otro dia tendremos que operar*/
-      dayDoomsDay = ((dayDoomsDay + dia)%7 +doomsDay)%7;
-    }
-
-  }else if(mes%2 == 0){
-    /*Para los meses pares, el doomsDay es el n-esimo dia del n-esimo mes*/
-    dayDoomsDay = mes;
-    
-    /*SI es el mismo dia no hacemos nada*/
-    if(dia == dayDoomsDay){
-      dayDoomsDay = doomsDay;
-    }else if(dayDoomsDay < dia){
-      /*Si el dia en cuestion es mayor al dia doomsDay tenemos que aproximarnos a la fecha
-      sumano de 7 en 7*/
-      while(dayDoomsDay<= dia) {
-         dayDoomsDay = dayDoomsDay+7;
-      }
-    }else if(dayDoomsDay > dia){
-      /*Si el dayDomsDay es mayor al diadado, operamos igual solo que restamos*/
-      while(dayDoomsDay>= dia && dayDoomsDay-7>0){
-         dayDoomsDay = dayDoomsDay-7;
-      }
-        
-    }
-
-    if(dia == dayDoomsDay){
-      /*Si multiplicando llegamos al dia dado, no tenemos que hacer nada ese dia sera doomsdar*/
-      dayDoomsDay = doomsDay;
-    }else{
-      /*Despues restamos el dia dado menos nuestro doomsday para obtener un valor relativo al dia de la semana*/
-      dayDoomsDay = dayDoomsDay - dia - doomsDay;
-      /*Si dicho valor es negativo debemos sacar su valor absoluto sino solo obtenemos el dia de la semana*/
-      if(dayDoomsDay < 0){
-          dayDoomsDay = ( dayDoomsDay*(-1))%7;
-      }else{
-          dayDoomsDay = (dayDoomsDay)%7;
-      }
-
-    }
-
+ 
   
-  }else if(mes == 1){
-    dayDoomsDay = (bisiesto)? 4: 3;
-
-    /*SI es el mismo dia no hacemos nada*/
-    if(dia == dayDoomsDay){
-      dayDoomsDay = doomsDay;
-    }else if(dayDoomsDay < dia){
-      /*Si el dia en cuestion es mayor al dia doomsDay tenemos que aproximarnos a la fecha
-      sumano de 7 en 7*/
-      while(dayDoomsDay<= dia) {
-         dayDoomsDay = dayDoomsDay+7;
-      }
-    }else if(dayDoomsDay > dia){
-      /*Si el dayDomsDay es mayor al diadado, operamos igual solo que restamos*/
-      while(dayDoomsDay>= dia && dayDoomsDay-7>0){
-         dayDoomsDay = dayDoomsDay-7;
-      }
-        
-    }
-
-    if(dia == dayDoomsDay){
-      /*Si multiplicando llegamos al dia dado, no tenemos que hacer nada ese dia sera doomsdar*/
-      dayDoomsDay = doomsDay;
-    }else{
-      /*Despues restamos el dia dado menos nuestro doomsday para obtener un valor relativo al dia de la semana*/
-      dayDoomsDay = dayDoomsDay - dia - doomsDay;
-      /*Si dicho valor es negativo debemos sacar su valor absoluto sino solo obtenemos el dia de la semana*/
-      if(dayDoomsDay < 0){
-          dayDoomsDay = ( dayDoomsDay*(-1))%7;
-      }else{
-          dayDoomsDay = (dayDoomsDay)%7;
-      }
-
-    }
+  /*Sacamos el doomsday del siglo 19xx tomando los dos primeros digitos del año*/
+  i = ano - (ano/100)*100;
+  /*dividimos el ano por 12, le sumamos el resto y sumamos la divicion del primer numero por
+  el segundo*/
+  dayDoomsDay = (i/12) + (i%12) + ( (i%12)/ 4 );
+  doomsDay = ( (dayDoomsDay%7) + doomsDay )%7;
+  doomsDay = doomsDay ? doomsDay : 7;
 
 
-
-  }else{
-    switch(dia){
+  /*Vamos a ajustar el dayDoomsDay para cada mes*/
+  if(mes == 2 || mes == 3){/*Para febrero y  maro que comparten fechas*/
+    dayDoomsDay = (bisiesto) ? 29 : 28;
+  }else if(  !(mes%2) ){/*Para los meses pares n-esimo dia del n-esimo mes*/
+    dayDoomsDay = mes;
+  }else {/*Trabajamos para los meses impares, enero siempre es 3 o 4, los demas 5-9 7-11*/
+    switch (mes){
+      case 1:
+        dayDoomsDay = (bisiesto)? 4 : 3 ;
+        break;
       case 5:
-      dayDoomsDay = 9;
-      break;
+        dayDoomsDay = 9;
+        break;
       case 7:
-      dayDoomsDay = 11;
-      break;
+        dayDoomsDay = 11;
+        break;
       case 9:
-      dayDoomsDay = 5;
-      break;
+        dayDoomsDay = 5;
+        break;
       case 11:
-      dayDoomsDay = 7;
-      break;
+        dayDoomsDay = 7;
+        break;
     }
-
-    /*SI es el mismo dia no hacemos nada*/
-    if(dia == dayDoomsDay){
-      dayDoomsDay = doomsDay;
-    }else if(dayDoomsDay < dia){
-      /*Si el dia en cuestion es mayor al dia doomsDay tenemos que aproximarnos a la fecha
-      sumano de 7 en 7*/
-      while(dayDoomsDay<= dia) {
-         dayDoomsDay = dayDoomsDay+7;
-      }
-    }else if(dayDoomsDay > dia){
-      /*Si el dayDomsDay es mayor al diadado, operamos igual solo que restamos*/
-      while(dayDoomsDay>= dia && dayDoomsDay-7>0){
-         dayDoomsDay = dayDoomsDay-7;
-      }
-        
-    }
-
-    if(dia == dayDoomsDay){
-      /*Si multiplicando llegamos al dia dado, no tenemos que hacer nada ese dia sera doomsdar*/
-      dayDoomsDay = doomsDay;
-    }else{
-      /*Despues restamos el dia dado menos nuestro doomsday para obtener un valor relativo al dia de la semana*/
-      dayDoomsDay = dayDoomsDay - dia - doomsDay;
-      /*Si dicho valor es negativo debemos sacar su valor absoluto sino solo obtenemos el dia de la semana*/
-      if(dayDoomsDay < 0){
-          dayDoomsDay = ( dayDoomsDay*(-1))%7;
-      }else{
-          dayDoomsDay = (dayDoomsDay)%7;
-      }
-
-    }
-
-
   }
 
+  /*SAcamos el modulo del dia doomsday del mes*/
+  dayDoomsDay =  dayDoomsDay%7;
+  dayDoomsDay =  ( (dia%7) ? dia%7 : 7 ) - ( (dayDoomsDay) ? dayDoomsDay : 7 );
+  dayDoomsDay = (dayDoomsDay + doomsDay)%7;
+
+  /*El 1 es lunes por lo tanto se cumple*/
+
+  printf("Para el dia:\n%d/%d/%d\n",dia, mes, ano );
   if(bisiesto) printf("El ano %d fue bisiesto\n",ano);
 
   switch(dayDoomsDay) {
