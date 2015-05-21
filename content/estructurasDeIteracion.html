@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>
+      Uni-trabajos
+    </title>
+    <meta charset="utf-8" />
+    <meta language="ES" />
+    <meta name="description" content="Pagina echa con el fin de recopilar notas y apuntes de programacion."/>
+    <meta name="keywords" content="" ="enseñansa, educacion, trabajos, tutoriales, programacion, c, c++"/>
+    <meta name="autor" content="Parris"/>
+    <meta name="robots" content="index,follow"/>
+    
+    <!--Import materialize.css-->
+    <link type="../text/css" rel="stylesheet" href="css/css.css"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  </head>
+
+  <body>
+    
+    <header>
+
+      <nav>
+        <div >
+          <a  href="/"  >Uni trabajos</a>
+          <div>
+            <a href="">Proyecto en github</a></li>
+          </div>
+        </div>
+      </nav>
+    
+      <h1>Estructuras de iteración.</h1>
+    
+    </header>
+
+    <section>
+
+      <article>
+        
+        <header>
+          <h2>Introducci&oacute;n a las estructuras de iteraci&oacute;n</h2>
+        </header>
+        <div>
+          <dl>
+            <dt>Iteraci&oacute;n</dt><dd>Acto de repetir un proceso con el objetivo de alcanzar una meta deseada, objetivo o resultado. Cada repetición del proceso se le denomina una "iteración</dd>
+          </dl>
+        </div>
+
+        <p>Más comúnmente llamadas Bucles, las estructuras de iteración es una herramienta que te permite repetir cierto poseso o cantidad de procesos para lograr un fin especifico. Un ejemplo sencillo de esto es cuando se quiere crear un programa que por ejemplo muestre en la pantalla los números del 1 al 10 tendríamos que hacer algo como esto.</p>
+
+<pre class=" language">
+imprimir 0
+imprimir 1
+imprimir 2
+imprimir 3
+imprimir 4
+imprimir 5
+imprimir 6
+imprimir 7
+imprimir 8
+imprimir 9
+</pre>
+
+      <p>Me gustaría introducirlos  a un acrónimo  totalmente filosófico y que deberían terne presente toda la vida como programadores este es DRY KISS, Don't repeat yourself, keep it simple, stupid.  Básicamente lo que nos da a entender es que debemos buscar siempre el código más simple y menos repetitivo posible, esto les ahorrara horas y horas tanto a ustedes como a sus compañeros.</p>
+
+      <p>En el ejemplo anterior 10 tenemos pasos, imaginemos que ahora tenemos que escribir los números del  30 al 39 con el mismo código que tenemos, cada sentencia tendría que ser modificada.</p>
+
+<pre>
+imprimir 30
+imprimir 31
+imprimir 32
+imprimir 33
+imprimir 34
+imprimir 35
+imprimir 36
+imprimir 37
+imprimir 38
+imprimir 39
+</pre>
+
+      <p>Tendríamos que  hacer esto cada vez que necesitemos que nuestro programa imprima diferentes números, hablamos de solamente 10 números, imagínate que tuberías que imprimir unos 100 números y cambiarlos cada vez, ahora imagínate que tienes una lista con los nombres de unas 2000 personas y quieres imprimirlas en pantalla. Seria demasiado tedioso ir escribiendo código para cada nombre de la lista DRY KISSS.</p>
+
+      <p>Ahora una computadora precisamente tiene el poder de hacer miles y miles de procesos una y otra vez repetidamente, de hecho lo hacen, tu pantalla por ejemplo dibuja cada ventada y cada elemento visible una y otra y otra vez, los videojuegos normalmente muestran 60 frames por segundo, lo que significa que dibuja en la pantalla de 60 imágenes  diferentes cada segundo. Bueno que el punto está claro, nosotros podemos aprovechar ese poder que tienen nuestros ordenadores. Como programadores usamos las estructuras de iteración con este fin.</p>
+
+      <p>Tenemos 3 estructuras principales</p>
+
+      <ol>
+      <li>WHILE</li>
+      <li>DO WHILE</li>
+      <li>FOR</li>
+      </ol>
+
+      Y una más de la que hablare en otro articulo  para que así se pueda entender el funcionamiento de estas iteraciones.
+
+      <ol>
+      <li>GOTO</li>
+      </ol>
+
+      <p>Todas estas estructuras sirven para crear repeticiones de código  y como las estructuras de control necesitan una condición que les permita saber cuando detenerse (si, hay que indicarlo de lo contrario entraremos a lo que se conoce como loops infinitos).</p>
+
+      <p>Como la mayoría de las instrucciones son (o deberían ser) auto descriptivas.</p>
+
+      <p>WHILE (condición) : MIENTRAS  : Su nombre nos indica que va a repetir su el código dentro de esta estructura MIENTRAS una condición sea real.</p>
+
+      <p>DO WHILE (condición) : HACER MIENTRAS : Parecida a la anterior, indica que va a HACER las instrucciones dentro de la estructura y después verificara una condición  para saber si puede seguir iterando MIENTRAS se cumpla la condición. La única diferencia con la anterior es que esta estructura ejecuta el código 1 vez al menos, mientras que el while simple.</p>
+
+      <p>FOR ( (iniciación), (condición), (incremento)  ) : PARA (parametros) : Esta es la estructura que cuesta un poco más asimilar, pues tiene dos aspectos que para este momento no has conocido. Para esta definición diremos que cada iteracion de este bucle nesesita una variable (iniciación) que va a ser modificada con cada iteración (incremento)  hasta que se cumpla cierta condición.</p>
+
+      <p>A continuacion veremos cada uno mas a fondo.</p>
+
+
+      </article>
+
+      <article>
+
+        <header>
+          <h2>Bucle while</h2>
+        </header>
+
+        
+        <p>El m&iacute;s sencillo de todos los bucles, util para la mayoria de tareas repetitivas, pero más aun en las iteraciones en las que no sabemos el numero de veces que debemos repetir la tarea asignada.
+        </p>
+
+        <p>Su funcionamiento es este:</p>
+
+
+        <p>A parrtir de la declaracion del bucle while se prureva una condicion, si es cierta las condiciones dentro de la estructura se ejecutar&aacute;n(hasta aqui es exactamente igual a la estructura IF) es cuando terminan las sentencias dentro de la estructura, que en vez de continuar con el flujo normal de instrucciones regresa al punto donde se encuentra while y comprueba otra vez la condición, si esta sigue siendo cierta ejecuta las instrucciones de nuevo y regresa a comprobar la condición y sigue así de manera indefinida (infinita) a menos de que la condición puesta al principio deje de ser verdadera.</p>
+
+        <p>Es importante mencionar que los casos óptimos donde while es útil son:</p>
+
+        <ul>
+          <li>No conocemos cuantas veces es necesario iterar para resolver cierto problema.
+        Sabemos que la iteración puede o no ser necesaria en nuestro algoritmo (lo que significa que puede que nos encontremos una variable que ya cumpla con las condiciones necesarias para que el bucle no se ejecute.
+          <li>Un ejemplo de esto es un bucle que divida cuente las veces que se le puede restar 2 a un numero natural. Sabemos que si el numero es menor a dos  ya no sera posible seguir restando.
+        </ul>
+
+        <pre>
+while (x >1){
+  x= x-2
+  cuenta = cuenta + 1 
+}
+        </pre>
+
+        <p>En este caso si el numero es 1 el bucle nunca se ejecutara igual para 0 y números negativos, nosotros no sabemos si vamos a iterar sobre 200 , 4 o 10k. Así que este es un ejemplo sencillo de como se puede usar while y por que es importante saber si nuestro bucle se necesita ejecutar o no.
+        
+      </article>
+
+      <article>
+    
+        <h2>do while</h2>
+
+        <p>Esta estructura es similar a while, solamente difiere de esta por una cosa; el código dentro de do while siempre se ejecutara al menos una vez en tanto que while comprueba una condición antes de ejecutarce, por lo tanto puede o no ejecutar el código dentro de la estructura. Una vez que do while termina por primera vez el código dentro de el, comprueba una condición, si esta es, verdadera realiza otra iteración sino, regresa al flujo normal del programa.
+
+        <p>Los casos óptimos para usar do while son:
+
+        <ul>
+          <li>Sabemos que nuestro bucle se va a ejecutar al menos una vez en nuestro programa.
+        no sabemos cuantas veces se va a ejecutar nuestro código pero sabemos que será al menos una vez.
+          <li>Nos encontramos cierto codigo que debemos ejecutar primero y varias veces más y seguir comprobando si tenemos el resultado deseado, sino ejecutarlo otra vez.
+          <li>Uno de los ejemplos mas sencillos es el de las típicas calculadoras que se piden (tan típicas como el hola mundo) en el que tenemos un menú para indicar al programa que operaciones deseamos hacer, si quisiéramos que el programa haga operaciones hasta que el usuario quiera; sin tener que ejecutar el programa cada vez que este desee hacer una operación (dry kiss), lo mejor seria usar unbucle do while.
+        </ul>
+
+        <pre>
+do 
+
+  imprime 
+  ..operaciones a hacer...
+  suma
+  resta
+  mul...
+  no deseo hacer mas operaciones.
+
+  switch(opcion) 
+  código para cumplir en base a cada operación incuido default
+  case 'x' :...
+
+while (opcion != 'x')
+
+        </pre>
+
+        <p>Este es un caso mas complejo que el anterior ( seguramente sabrán el código dentro de la calculadora) lo que quiero que se concentren sea en la variable opción que recibirá lo que el usuario  desea hacer. En caso de que el usuario desee salir del programa (una x haciendo alusión a las x de cerrar ventana de los so) el bucle dejaría de  iterar pues la condición para seguir con dicho bucle es que sea cual sea la opción del usuario siga iterando a menos de que sea una x, en tal caso el bucle termina.
+
+
+      </article>
+
+      <article>
+
+        <h2>For</h2>
+
+        <p>Este es el bucle mas complicado y lo veremos por encima (tendré un artículo completo para él después...algun dia...nunca) la razón de esto es que no solo necesita una condición, sino otros dos parámetros (descripción de parametro), la razón es que funciona ligeramente diferente a las otras dos estructuras de iteración. Para tener un poco el concepto de FOR podríamos decir  que un bucle que cuenta las iteraciones hasta cierto punto definido.
+
+        <p>Necesitamos una  variable que se va a llamar  de "iniciación" que como indica el nombre recogerá el primer valor de nuestra cuenta. Para esto usaremos el primer ejemplo este documento, en el que tenemos que imprimir números de x a y numero. Normalmente se usa una variable de nombre i o count.
+
+        <pre>
+FOR (count = 0; .....)
+        </pre>
+
+        <p>Vemos que  esta es una sentencia de asignación, debemos asignar un valor a una variable que sera nuestra cuenta, puede ser como 0 como 1000 no importa, lo que importa es que de ese numero comenzáremos el bucle.
+
+        <p>La segunda parte es una condición, esto marcará hasta que punto queremos que nuestro bucle llegue , es importante tener esto en cuenta por que FOR es óptimo para iteraciones en las que sabemos cuantas veces vamos a repetir un bucle, esta condición debería estar asociada al final del bucle.
+
+        <pre>
+FOR (count = 0; count >10;....)
+        </pre>
+
+        <p>Aquí estaríamos diciendo  que el bucle terminara cuando se compruebe que count deje de ser menor a 10. Normalmente las sentencias en los bucles FOR se separan por un punto y coma, pues no son parámetros como si de cualquier función se tratase, hay que tener en cuenta que son 3 sentencias separadas.
+
+        <p>La última parte de el bucle le da el sentido a la primera y es la razón por la cual la estructura en si es diferente, y  esto es a lo que llamamos "incremento", esta parte es la que se encarga de ir contando o cambiando la variable de iniciación con cada iteración, normalmente es simplemente una suma de 1 en 1 (n+1).
+
+        <pre>
+FOR (count = 0; count &tb; 10; count++)
+        </pre>
+
+        <p>Los dobles signos de sumas significan que a la variable se le va a sumar uno (lo mismo que cout = cout + 1).  Cada iteración al terminar sumara 1 a la cuenta,  aquí es  es una parte en la que muchos se confunden, en este código en concreto el bucle se repetirá 10 veces lo que corresponde a count = 0,1,2,3,4,5,6,7,8,9 y en la ultima iteración cout se le sumara 1 por lo cual terminara con el valor de 10 por lo tanto la condición no se cumplirá y el bucle terminara. Si empezáramos en el numero 1 se repetirá el bucle 9 veces, si quisiéramos que  este tuviera 10 iteraciones  deberíamos usar la condición de igual o menor (&tb;=) entonces el bucle iteraría 10 veces; pero si lo usáramos con la inicialización de 0 tendríamos una iteración mas de las deseadas(11) hay que anotar este punto para evitar este error que es muy común. La confucion se da cuando tenemos que usar arrays o tablas (lo veremos despu&eacute;s).
+        <pre>
+
+...(count = 0; count &tb; 10; ...)
+
+...(count = 1; count &tb;= 10;...)
+
+        </pre>
+
+        <p>Así tenemos este pseudocódigo.
+
+        <pre>
+FOR (count = 0 ;  count &tb; 10; count++)
+imprimir count;
+END
+        </pre>
+
+        <p>La salida seria esta
+
+        <pre>
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+        </pre>
+
+        <p>Como vemos tenemos la cuenta deseada, podríamos sustituir los números de inicio por 100  y en la condición 1000 y seguiría siendo el mismo comportamiento. Hay que tener en cuenta en esta estructura y en las demás  que el bucle termine en algún momento pues si usáramos valores inadecuados terminaríamos con bucles infinitos. Podemos restar en el valor de incremento, e incluso podríamos operar con mas de una variable.
+
+        <p>El funcionamiento del bucle es este
+
+        <p>Primero se lee la iniciación y se  asignan valores a las variables dadas, después ejecuta el código de la  estructura , cuando termina esa primera iteración ejecuta la sentencia de incremento, para por ultimo comprobar la condición dada si esta condición es cierta empezara el bucle de nuevo (ojo que la iniciación solo se ejecutará una sola vez) para seguir el proceso de incremento y comprobación hasta que la condición deje de ser verdadera.
+
+        <p>El bucle FOR el mas usado y útil de las estructuras de iteración y se debe practicar mucho de sus posibilidades, otros ejemplos de uso del bucle es por ejemplo ir recogiendo cadenas de texto letra a letra, trabajar con listas, mostrar tablas en pantalla, trabajo con arrays y punteros etc.
+
+        <p>Por ultimo como los otros dos tenemos casos óptimos donde usar esta estructura.
+
+        <ul>
+         <li>Conocemos el numero de iteraciones que deseamos hacer.
+         <li>Queremos tener controladas las condiciones bajo las cuales vamos a iterar.
+          <li>Tenemos un rango especifico para iterar.
+        </ul>
+
+        <p>Esta seria una pequeña explicación de los tipos de estructuras de iteración los motivos por los cuales usarlas, cabe destacar que cuando quieres hacer un bucle puedes usar cualquiera de las tres estructuras de iteración pues son análogas lo único que  les diferencia es como se aplican; y al final si se usa cada una para lo cual fue creada ahorraremos algo de memoria y tiempo de ejecución, aparte de  que al programar en un equipo todos podrán entender la función por la cual se implementa cada uno.        
+        
+      </article>
+
+      <article>
+
+      <h2>&Aacute;nalogia entre las estructuras de iteracion</h2>
+
+      <p>Si descomponemos las estructuras de iteracion, podemos darnos cuenta que tienen un elemento en comun, todas verifican una condicion en cada iteracion, mientras que en for tenemos otros dos parametros, que en realidad son sentencias aparte, que se ejecutan en un momento dado de nuestro bucle.
+
+      <p>Por lo tanto un for es de esta forma:
+
+<pre>
+for(iniciacion; condicion; incremento){
+  operaciones
+}
+</pre>
+
+      <p>El cual se puede emular de esta forma con un bucle while:
+      <pre>
+iniciacion
+while(condicion){
+  operaciones
+  incremento
+}
+      </pre>
+
+      <p>Y un bucle while, puede que tiene esta forma:
+      <pre>
+
+while(condicion){
+  operaciones;
+}
+      </pre>
+
+      <p>Es analogo a un bucle for escrito de estas dos formas
+
+      <pre>
+for(vacio;condicion;vacio){
+  operaciones
+}
+
+//o tambien
+
+for(variableDeCondicion; Condicion; variableDeCondicion){
+  operaciones
+}
+      </pre>
+
+      <p>En donde la variableDeLaCondicion es el campo que deseemos condicionar, ojo, no lo estamos incrementando ni inicializando, simplemente marcamos su nombre en el parametro sin m&iacute;s.
+
+      <p>Podriamos decir que for y do while son formas de simplificar el trabajo con while para poderlo hacer m&iacute;s comprensible para nosotros. Asi tenemos que un bucle do while es:
+
+    <pre>
+do{
+  operaciones
+}while(condicion)
+    </pre>      
+
+      <p> Es analogo a hacer algo como esto:
+
+      <pre>
+primeraIteracionDeOperaciones
+while(condicion){
+  operaciones
+}
+      </pre>
+
+      <p>Pues tenemos que la estructura do while, tiene el motivo de hacer siempre una operacion (iteracion) antes de comprobar la condicion y seguir operando, donnde primeraIteracionDeOperaciones es un duplicado de operaciones, esto no es conveniente pues hace dificil el mantenimiento de dicho codigo, el tener que modificar una parte significaria modificar las dos partes siempre, DRY KISS.
+
+      </article>
+
+
+      <aside>
+        <h5>Para manejar este tema, quiza necesites antes ver</h5>
+        <ul>
+          <li>Familiarce con el pseudocódigo que se utiliza en estos textos
+          <li>Conocer que es una estructura de datos.
+          <li>Conocer de preferencia las estructuras anidadas.
+          <li>Conocer las sentencias de control.
+        </ul>
+      </aside>
+
+      <p>Espero les sea útil cualquier duda o corrección no dudes en ponerte en contacto conmigo esto me ayudaría mucho a mejorar la calidad del texto.
+
+
+    </section>
+
+  </body>
+  
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+</html>
