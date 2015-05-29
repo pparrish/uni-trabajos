@@ -50,15 +50,15 @@ void main(){
     printf("\n\n\n\n\n");
   break;
   case '2':
-    printf("\n\n\n\n\n");
-    for(y=1; y <= n; y++){
+    printf("......\n");
+    for(y=0; y<n; y++){
 
-      for(x=y; x>=1; x--){
+      for(x=1; x <= (n-y); x++){
         printf("%d",x);
       }
       printf("\n");
     }
-    printf("\n\n\n\n\n");
+    printf("......\n");
   break;
   case '3':
 
@@ -82,12 +82,12 @@ void main(){
     printf("\n\n");
     for(y=0; y < n; y++){
       
-      for(x=n; x>=(n-y); x--){
-        printf("%d",x);
+      for(x=0; x<y; x++){
+        printf(" ");
       }
 
-      for(x; x>0; x--){
-        printf(" ");
+      for(x = 1+y ; x<=n; x++){
+        printf("%d",x);
       }
 
       printf("\n");
