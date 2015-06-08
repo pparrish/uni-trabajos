@@ -18,7 +18,7 @@
 /*Version 2 Ahora nuestros printf se encuentran dentro de la funcion*/
 
 /*Declaracion*/ 
-int suma(int,int,int);
+void suma(int,int,int);
 
 void main(){
   int d1,d2,d3;
